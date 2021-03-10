@@ -26,11 +26,16 @@ class App extends Component {
     );
     return (
       <div className="App">
+        <h1 className="header">Monsters Inc.</h1>
         <SearchBox
-          placeholder="search monster"
+          placeholder="search monsters"
           handleChange={(e) => this.setState({ searchField: e.target.value })}
         />
         <CardList monsters={fileteredMonsters} />
+
+        <footer>
+          <p>Created by Qui Van 2021</p>
+        </footer>
       </div>
     );
   }
