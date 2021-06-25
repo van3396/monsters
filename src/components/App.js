@@ -11,22 +11,31 @@ class App extends Component {
       monsters: [],
       searchField: "",
     };
+    console.log('constructor')
   }
 
   componentDidMount() {
+    console.log('fire')
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((res) => res.json())
       .then((users) => this.setState({ monsters: users }));
   }
 
+  onSeachChange = (event) => {
+    this.setState({
+      searchField: event.target.value,
+    });
+  };
+
   render() {
+    console.log('render')
     const { monsters, searchField } = this.state;
     const fileteredMonsters = monsters.filter((monster) =>
       monster.name.toLowerCase().includes(searchField.toLowerCase())
     );
     return (
       <div className="App">
-        <h1 className="header">Monsters Inc.</h1>
+        <h1 className="header">Monsters</h1>
         <SearchBox
           placeholder="search monsters"
           handleChange={(e) => this.setState({ searchField: e.target.value })}
